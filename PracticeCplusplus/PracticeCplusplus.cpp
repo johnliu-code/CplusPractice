@@ -23,24 +23,28 @@ int main()
             cout << "Give a mark (-1 to finish) : \n";
             cin >> inputValeur;
         }
+        else 
+        {
+            if (loopcounter == 0)                                  //First loop pass the valid value to min and max, for compare with others
+                min = max = inputValeur;
 
-        if (loopcounter == 0)                                  //First loop pass the valid value to min and max, for compare with others
-            min = max = inputValeur;
+            if (inputValeur > -1 && inputValeur <= min) {          // Min should not be -1, when entre -1 will only for existe the loop
+                if (inputValeur == min)
+                    occupenceDuMin++;                              //Get min value existe times
+                min = inputValeur;
+            }
 
-        if (inputValeur != -1 && inputValeur <= min) {          // Min should not be -1, when entre -1 will only for existe the loop
-            if (inputValeur == min)                       
-                occupenceDuMin++;                              //Get min value existe times
-            min = inputValeur;
+            if (inputValeur > -1 && inputValeur >= max) {
+                if (inputValeur == max)
+                    occupenceDuMax++;                                //Get max value existe times
+                max = inputValeur;
+            }
         }
-  
-        if (inputValeur >= max) {
-            if (inputValeur == max) 
-                occupenceDuMax++;                                //Get max value existe times
-            max = inputValeur;
-        }
 
-        if (inputValeur != -1)
-            loopcounter++;                                       //Incrise counter when valid input
+        //Incrise counter when valid input
+        if (inputValeur > -1)
+            loopcounter++;
+                                  
     }
     while (inputValeur != -1);
 
